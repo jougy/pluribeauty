@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Apoiadores - Pluri Beauty"
+  description="Apoie o Pluri Beauty e faca parte da construcao de uma plataforma que valoriza profissionais locais de beleza."
+>
+  <section class="pt-32 pb-16 bg-gradient-elegant">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="editorial-label">Apoiadores</span>
+        <h1 class="mt-4 magazine-headline text-foreground">Faca parte dessa <span class="italic text-primary">transformacao.</span></h1>
+        <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">Se voce acredita em tecnologia acessivel e valorizacao de profissionais locais, pode apoiar o projeto.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24 bg-secondary">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="beauty-card text-center">
+          <h3 class="font-display text-xl font-medium text-foreground mb-3">Pix</h3>
+          <p class="text-sm text-muted-foreground mb-6">Contribua diretamente via Pix</p>
+          <button class="btn-hero w-full" data-copy-text="pix@pluri.beauty">Copiar chave Pix</button>
+        </div>
+        <div class="beauty-card text-center">
+          <h3 class="font-display text-xl font-medium text-foreground mb-3">Apoio recorrente</h3>
+          <p class="text-sm text-muted-foreground mb-6">Em breve: apoio mensal com beneficios</p>
+          <button class="btn-hero-outline w-full opacity-60 cursor-not-allowed" disabled>Em breve</button>
+        </div>
+        <div class="beauty-card text-center">
+          <h3 class="font-display text-xl font-medium text-foreground mb-3">Outras formas</h3>
+          <p class="text-sm text-muted-foreground mb-6">Quer apoiar de outra forma? Fale conosco</p>
+          <a href="#form" class="btn-hero w-full">Entrar em contato</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="form" class="py-20 lg:py-24">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="editorial-label">Fale conosco</span>
+          <h2 class="mt-4 font-display text-3xl font-medium text-foreground">Quer apoiar de outra forma?</h2>
+        </div>
+        <form data-toast-message="Obrigado pelo interesse! Entraremos em contato." class="beauty-card space-y-6">
+          <div><label for="nome" class="label">Nome</label><input id="nome" class="input mt-2" required /></div>
+          <div><label for="email" class="label">E-mail</label><input id="email" type="email" class="input mt-2" required /></div>
+          <div><label for="mensagem" class="label">Como gostaria de apoiar?</label><textarea id="mensagem" rows="4" class="textarea mt-2"></textarea></div>
+          <button class="btn-hero w-full" type="submit">Enviar mensagem</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

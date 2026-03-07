@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import heroImage from '../assets/hero-beauty.jpg';
+import salonImage from '../assets/salon-interior.jpg';
+import professionalImage from '../assets/professional-stylist.jpg';
+---
+
+<BaseLayout
+  title="Pluri Beauty - Encontre e Agende Profissionais de Beleza"
+  description="Pluri Beauty conecta clientes e profissionais de beleza com organizacao e praticidade."
+>
+  <section class="relative min-h-screen flex items-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src={heroImage.src} alt="Beauty professional" class="w-full h-full object-cover object-center" />
+      <div class="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+    </div>
+
+    <div class="relative container mx-auto px-6 lg:px-8 pt-20">
+      <div class="max-w-2xl">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="text-gold">*</span>
+          <span class="editorial-label">Em breve • Beta exclusivo</span>
+        </div>
+
+        <h1 class="magazine-headline text-foreground mb-6">
+          Encontre e agende profissionais de <span class="text-gradient-rose italic">beleza</span> com facilidade.
+        </h1>
+
+        <p class="text-lg md:text-xl text-muted-foreground leading-relaxed mb-10">
+          Um app feito para clientes e profissionais que querem organizacao, confianca e tempo de volta.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/beta" class="btn-hero">Quero participar do Beta</a>
+          <a href="/beta#profissional" class="btn-hero-outline">Sou profissional da beleza</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32 bg-secondary">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="editorial-label">O problema</span>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-foreground">
+          Marcar servicos de beleza hoje ainda e <span class="italic text-primary">caotico.</span>
+        </h2>
+        <div class="section-divider my-12"></div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-12">
+          {['WhatsApp sem resposta', 'Agenda desorganizada', 'Cancelamentos frequentes', 'Falta de confianca', 'Dificil achar bons profissionais'].map((item) => (
+            <div class="flex flex-col items-center gap-4 p-6 rounded-2xl bg-background/50 border border-border/50 transition-all duration-300 hover:bg-background hover:shadow-[var(--shadow-card)] hover:border-primary/20">
+              <div class="w-12 h-12 rounded-full bg-rose-light flex items-center justify-center text-primary">•</div>
+              <p class="text-sm font-medium text-muted-foreground">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-hero"></div>
+    <div class="container mx-auto px-6 lg:px-8 relative">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative">
+          <div class="relative rounded-2xl overflow-hidden shadow-[var(--shadow-card)]">
+            <img src={salonImage.src} alt="Elegant beauty salon" class="w-full aspect-square object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-foreground/20 to-transparent"></div>
+          </div>
+          <div class="absolute -bottom-6 -right-6 w-32 h-32 rounded-full border-2 border-primary/30"></div>
+        </div>
+
+        <div>
+          <span class="editorial-label">A solucao</span>
+          <h2 class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-4">
+            O Pluri Beauty organiza tudo em <span class="text-gradient-gold italic">um so lugar.</span>
+          </h2>
+          <div class="w-16 h-px bg-primary/50 mb-10"></div>
+
+          <div class="space-y-6">
+            {[
+              ['Busca por especialidade', 'Encontre exatamente o que voce precisa'],
+              ['Profissionais proximos', 'Descubra talentos na sua regiao'],
+              ['Agenda inteligente', 'Marque em segundos, sem complicacao'],
+              ['Pagamento facilitado', 'Pague como preferir, com seguranca'],
+              ['Comunicacao clara', 'Converse direto com o profissional'],
+            ].map((item) => (
+              <div class="group flex items-start gap-4">
+                <div class="w-10 h-10 rounded-full bg-secondary flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors duration-300 text-primary group-hover:text-primary-foreground">•</div>
+                <div>
+                  <h3 class="font-display text-lg font-medium text-foreground">{item[0]}</h3>
+                  <p class="text-sm text-muted-foreground">{item[1]}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32 bg-secondary">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="editorial-label">Para quem e</span>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-foreground">
+          Feito para <span class="italic text-primary">todos</span> os lados da beleza.
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="beauty-card">
+          <h3 class="font-display text-2xl font-medium text-foreground mb-6">Clientes</h3>
+          <ul class="space-y-4 text-muted-foreground">
+            <li>Encontre bons profissionais</li>
+            <li>Veja trabalhos reais</li>
+            <li>Marque sem dor de cabeca</li>
+          </ul>
+        </div>
+
+        <div class="beauty-card relative overflow-hidden">
+          <div class="absolute inset-0 opacity-10">
+            <img src={professionalImage.src} alt="" class="w-full h-full object-cover" />
+          </div>
+          <div class="relative">
+            <h3 class="font-display text-2xl font-medium text-foreground mb-6">Profissionais</h3>
+            <ul class="space-y-4 text-muted-foreground">
+              <li>Agenda organizada</li>
+              <li>Mais visibilidade</li>
+              <li>Menos cancelamentos</li>
+              <li>Mais tempo pra atender</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32 relative">
+    <div class="absolute inset-0 bg-gradient-hero opacity-50"></div>
+    <div class="container mx-auto px-6 lg:px-8 relative">
+      <div class="text-center mb-20">
+        <span class="editorial-label">Como funciona</span>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl lg:text-5xl font-medium text-foreground">
+          Tres passos. <span class="italic text-primary">Sem complicacao.</span>
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 max-w-5xl mx-auto">
+        {[
+          ['01', 'Escolha o servico', 'Navegue por categorias ou busque diretamente o que voce precisa.'],
+          ['02', 'Escolha o profissional', 'Veja avaliacoes, portfolio e encontre o match perfeito.'],
+          ['03', 'Agende em segundos', 'Selecione o horario, confirme e pronto. Simples assim.'],
+        ].map((step) => (
+          <div class="relative group text-center">
+            <span class="absolute -top-4 left-1/2 -translate-x-1/2 font-display text-6xl font-light text-primary/10">{step[0]}</span>
+            <div class="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary border border-border group-hover:border-primary group-hover:bg-primary transition-all duration-500 mb-6 shadow-[var(--shadow-soft)] text-primary group-hover:text-primary-foreground">•</div>
+            <h3 class="font-display text-xl font-medium text-foreground mb-3">{step[1]}</h3>
+            <p class="text-sm text-muted-foreground leading-relaxed">{step[2]}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 lg:py-32 relative overflow-hidden">
+    <div class="absolute inset-0 bg-foreground"></div>
+    <div class="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+    <div class="absolute bottom-0 right-1/4 w-48 h-48 rounded-full bg-gold/10 blur-3xl"></div>
+
+    <div class="container mx-auto px-6 lg:px-8 relative">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="inline-block text-xs font-medium tracking-[0.2em] uppercase text-primary mb-6">Beta exclusivo</span>
+        <h2 class="font-display text-3xl md:text-4xl lg:text-5xl font-medium text-background mb-6">
+          O Pluri Beauty esta em <span class="italic text-primary">Beta fechado.</span>
+        </h2>
+        <p class="text-lg text-background/70 mb-10">Garanta seu acesso antecipado e faca parte da construcao do futuro da beleza.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/beta" class="btn-hero">Quero testar como cliente</a>
+          <a href="/beta#profissional" class="btn-hero-outline border-background/30 text-background hover:bg-background hover:text-foreground">Quero testar como profissional</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

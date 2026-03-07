@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Beta Exclusivo - Pluri Beauty"
+  description="Participe do beta exclusivo do Pluri Beauty e seja um dos primeiros a experimentar o futuro dos agendamentos."
+>
+  <section class="pt-32 pb-16 bg-gradient-elegant">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="editorial-label">Beta exclusivo</span>
+        <h1 class="mt-4 magazine-headline text-foreground">Faca parte do <span class="italic text-primary">futuro da beleza.</span></h1>
+        <p class="mt-6 text-lg text-muted-foreground">Inscreva-se para ter acesso antecipado e ajudar a construir a melhor experiencia.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-secondary">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {['Acesso antecipado', 'Ajude a moldar o produto', 'Beneficios exclusivos', 'Suporte prioritario'].map((benefit) => (
+          <div class="flex items-center gap-3 p-4 rounded-lg bg-background border border-border/50">
+            <div class="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 text-primary">+</div>
+            <span class="text-sm text-foreground">{benefit}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24" id="profissional">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-xl mx-auto">
+        <div class="flex justify-center mb-12">
+          <div class="inline-flex bg-secondary rounded-full p-1.5">
+            <button id="btn-cliente" class="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium bg-primary text-primary-foreground shadow-[var(--shadow-soft)]">Sou Cliente</button>
+            <button id="btn-profissional" class="flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium text-muted-foreground hover:text-foreground">Sou Profissional</button>
+          </div>
+        </div>
+
+        <form data-toast-message="Inscricao recebida! Entraremos em contato em breve." class="beauty-card">
+          <h2 id="beta-title" class="font-display text-2xl font-medium text-foreground mb-8 text-center">Quero testar como cliente</h2>
+          <div class="space-y-6">
+            <div><label class="label" for="nome">Nome completo</label><input class="input mt-2" id="nome" required /></div>
+            <div><label class="label" for="email">E-mail</label><input class="input mt-2" id="email" type="email" required /></div>
+            <div><label class="label" for="celular">Celular</label><input class="input mt-2" id="celular" type="tel" required /></div>
+            <div><label class="label" for="cidade">Cidade</label><input class="input mt-2" id="cidade" required /></div>
+
+            <div id="professional-fields" class="hidden space-y-6">
+              <div>
+                <label class="label" for="especialidade">Especialidade</label>
+                <select class="select mt-2" id="especialidade">
+                  <option value="">Selecione sua especialidade</option>
+                  <option>Cabeleireiro(a)</option>
+                  <option>Manicure</option>
+                  <option>Maquiador(a)</option>
+                  <option>Esteticista</option>
+                  <option>Barbeiro</option>
+                  <option>Designer de Sobrancelha</option>
+                  <option>Outro</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="local">Onde voce atende?</label>
+                <select class="select mt-2" id="local">
+                  <option>Em salao/estudio</option>
+                  <option>Atendimento a domicilio</option>
+                  <option>Ambos</option>
+                </select>
+              </div>
+              <div>
+                <label class="label" for="experiencia">Tempo de experiencia</label>
+                <select class="select mt-2" id="experiencia">
+                  <option>Menos de 1 ano</option>
+                  <option>1 a 3 anos</option>
+                  <option>3 a 5 anos</option>
+                  <option>5 a 10 anos</option>
+                  <option>Mais de 10 anos</option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-hero w-full mt-4">Quero participar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const clientBtn = document.getElementById('btn-cliente');
+    const proBtn = document.getElementById('btn-profissional');
+    const proFields = document.getElementById('professional-fields');
+    const title = document.getElementById('beta-title');
+
+    function setMode(mode) {
+      const client = mode === 'cliente';
+      clientBtn?.classList.toggle('bg-primary', client);
+      clientBtn?.classList.toggle('text-primary-foreground', client);
+      clientBtn?.classList.toggle('shadow-[var(--shadow-soft)]', client);
+      clientBtn?.classList.toggle('text-muted-foreground', !client);
+
+      proBtn?.classList.toggle('bg-primary', !client);
+      proBtn?.classList.toggle('text-primary-foreground', !client);
+      proBtn?.classList.toggle('shadow-[var(--shadow-soft)]', !client);
+      proBtn?.classList.toggle('text-muted-foreground', client);
+
+      proFields?.classList.toggle('hidden', client);
+      if (title) {
+        title.textContent = client ? 'Quero testar como cliente' : 'Quero testar como profissional';
+      }
+    }
+
+    clientBtn?.addEventListener('click', () => setMode('cliente'));
+    proBtn?.addEventListener('click', () => setMode('profissional'));
+  </script>
+</BaseLayout>

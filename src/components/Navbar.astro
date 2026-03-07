@@ -1,0 +1,66 @@
+---
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const navLinks = [
+  { href: '/', label: 'Inicio' },
+  { href: '/beta', label: 'Beta' },
+  { href: '/sobre', label: 'Sobre' },
+  { href: '/apoiadores', label: 'Apoiadores' },
+  { href: '/patrocinadores', label: 'Patrocinadores' },
+  { href: '/contato', label: 'Contato' },
+];
+---
+
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent">
+  <nav class="container mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="/" class="relative z-10 font-display text-2xl font-semibold tracking-tight text-foreground">Pluri Beauty</a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'relative text-sm font-medium tracking-wide transition-colors duration-300 hover:text-primary',
+              currentPath === link.href ? 'text-primary' : 'text-muted-foreground',
+            ]}
+          >
+            {link.label}
+            {currentPath === link.href && <span class="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"></span>}
+          </a>
+        ))}
+      </div>
+
+      <div class="hidden lg:block">
+        <a href="/beta" class="btn-hero">Entrar no Beta</a>
+      </div>
+
+      <button id="menu-toggle" class="lg:hidden relative z-10 p-2 text-foreground" aria-label="Abrir menu">
+        <span id="menu-icon-open">Menu</span>
+        <span id="menu-icon-close" class="hidden">Fechar</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<div id="mobile-menu" class="fixed inset-0 z-40 lg:hidden hidden">
+  <div class="absolute inset-0 bg-background/98 backdrop-blur-lg"></div>
+  <nav class="relative flex flex-col items-center justify-center h-full gap-8 pt-20">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class:list={[
+          'text-2xl font-display font-medium transition-colors duration-300 hover:text-primary',
+          currentPath === link.href ? 'text-primary' : 'text-foreground',
+        ]}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/beta" class="btn-hero mt-4">Entrar no Beta</a>
+  </nav>
+</div>

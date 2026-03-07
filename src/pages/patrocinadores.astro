@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Patrocinadores - Pluri Beauty"
+  description="Seja patrocinador do Pluri Beauty e conecte sua marca a milhares de profissionais de beleza em todo o Brasil."
+>
+  <section class="pt-32 pb-16 bg-gradient-elegant">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center">
+        <span class="editorial-label">Parcerias</span>
+        <h1 class="mt-4 magazine-headline text-foreground">Conecte sua marca a <span class="italic text-primary">milhares de profissionais.</span></h1>
+        <p class="mt-6 text-lg text-muted-foreground max-w-2xl mx-auto">Marcas parceiras podem ampliar seu alcance e impactar a comunidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24 bg-secondary">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <span class="editorial-label">Vantagens</span>
+        <h2 class="mt-4 font-display text-3xl md:text-4xl font-medium text-foreground">Marcas parceiras podem:</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+        <div class="beauty-card text-center"><h3 class="font-display text-xl font-medium text-foreground mb-3">Oferecer beneficios</h3><p class="text-sm text-muted-foreground">Crie promocoes exclusivas para usuarios da plataforma.</p></div>
+        <div class="beauty-card text-center"><h3 class="font-display text-xl font-medium text-foreground mb-3">Divulgar produtos</h3><p class="text-sm text-muted-foreground">Alcance profissionais de beleza em todo o Brasil.</p></div>
+        <div class="beauty-card text-center"><h3 class="font-display text-xl font-medium text-foreground mb-3">Apoiar profissionais locais</h3><p class="text-sm text-muted-foreground">Associe sua marca a valorizacao do talento local.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container mx-auto px-6 lg:px-8">
+      <div class="max-w-xl mx-auto">
+        <div class="text-center mb-12">
+          <span class="editorial-label">Interesse</span>
+          <h2 class="mt-4 font-display text-3xl font-medium text-foreground">Quero ser patrocinador</h2>
+        </div>
+
+        <form data-toast-message="Recebemos seu interesse! Nossa equipe entrara em contato." class="beauty-card space-y-6">
+          <div><label for="empresa" class="label">Nome da empresa</label><input id="empresa" class="input mt-2" required /></div>
+          <div><label for="nome" class="label">Seu nome</label><input id="nome" class="input mt-2" required /></div>
+          <div><label for="email" class="label">E-mail corporativo</label><input id="email" type="email" class="input mt-2" required /></div>
+          <div><label for="interesse" class="label">Qual seu interesse?</label><textarea id="interesse" rows="4" class="textarea mt-2" placeholder="Conte-nos mais sobre como gostaria de se envolver..."></textarea></div>
+          <button type="submit" class="btn-gold w-full">Enviar interesse</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

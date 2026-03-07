@@ -1,0 +1,100 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Navbar currentPath={currentPath} />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer />
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+      const header = document.getElementById('site-header');
+      const menuToggle = document.getElementById('menu-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const openLabel = document.getElementById('menu-icon-open');
+      const closeLabel = document.getElementById('menu-icon-close');
+      const toast = document.getElementById('toast');
+
+      function updateHeader() {
+        if (!header) return;
+        if (window.scrollY > 20) {
+          header.classList.add('bg-background/90', 'backdrop-blur-md', 'border-b', 'border-border/50', 'shadow-[var(--shadow-soft)]');
+        } else {
+          header.classList.remove('bg-background/90', 'backdrop-blur-md', 'border-b', 'border-border/50', 'shadow-[var(--shadow-soft)]');
+        }
+      }
+
+      function closeMenu() {
+        if (!mobileMenu) return;
+        mobileMenu.classList.add('hidden');
+        openLabel?.classList.remove('hidden');
+        closeLabel?.classList.add('hidden');
+      }
+
+      function showToast(message) {
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add('show');
+        window.setTimeout(() => toast.classList.remove('show'), 2400);
+      }
+
+      updateHeader();
+      window.addEventListener('scroll', updateHeader);
+
+      menuToggle?.addEventListener('click', () => {
+        if (!mobileMenu) return;
+        const isHidden = mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        openLabel?.classList.toggle('hidden', isHidden);
+        closeLabel?.classList.toggle('hidden', !isHidden);
+      });
+
+      mobileMenu?.querySelectorAll('a').forEach((el) => el.addEventListener('click', closeMenu));
+
+      document.querySelectorAll('form[data-toast-message]').forEach((form) => {
+        form.addEventListener('submit', (event) => {
+          event.preventDefault();
+          const message = form.getAttribute('data-toast-message') || 'Enviado com sucesso';
+          showToast(message);
+          form.reset();
+        });
+      });
+
+      document.querySelectorAll('[data-copy-text]').forEach((el) => {
+        el.addEventListener('click', async () => {
+          const text = el.getAttribute('data-copy-text');
+          if (!text) return;
+          try {
+            await navigator.clipboard.writeText(text);
+            showToast('Chave Pix copiada!');
+          } catch {
+            showToast('Nao foi possivel copiar automaticamente');
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
